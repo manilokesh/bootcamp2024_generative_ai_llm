@@ -44,5 +44,6 @@ def chroma_get(
         persist_directory=persist_directory,
         collection_name=collection_name,
         embedding_function=embedding_function,
+        client_settings=Settings(anonymized_telemetry=False),
     )
     return vectorstore

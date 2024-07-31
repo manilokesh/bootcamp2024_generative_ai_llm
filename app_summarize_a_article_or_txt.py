@@ -1,15 +1,22 @@
-from utils.MyUtils import logger
+#Summarize a Long Article
+"""
+Using a predefined LangChain chain to help the Foundation LLM, summarize a document that exceeds the context window limit. 
+
+1. Load the document.
+2. Check its token count.
+3. Split it into smaller parts.
+4. Use a predefined LangChain chain to send the parts to ChatGPT and get a summary of the document.
+"""
+
+from utils.MyUtils import logger,clear_terminal
+
+clear_terminal()
+
+
 from utils.MyModels import init_llm, LlmModel, BaseChatModel 
 
-########################################################################
-# region Initialise foundation LLM
-
 llm: BaseChatModel = init_llm(LlmModel.MISTRAL, temperature=0)
-
-# endregion Initialise foundation LLM
-
-########################################################################
-
+ 
 # Load the text file
 
 with open("data/be-good-and-how-not-to-die.txt", "r") as file:

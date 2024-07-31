@@ -1,9 +1,11 @@
-from enum import Enum
 
 ########################################################################
 # region Logging
 
-import coloredlogs, logging, sys
+import logging
+import sys
+
+import coloredlogs
 
 logger = logging.getLogger(__name__)
 coloredlogs.install(
@@ -21,8 +23,7 @@ coloredlogs.install(
 
 # > pip install pip install python-dotenv
 
-from dotenv import load_dotenv, find_dotenv
-import os
+from dotenv import find_dotenv, load_dotenv
 
 # Load the environment variables from the .env file
 # find_dotenv() ensures the correct path to .env is used
@@ -35,20 +36,32 @@ else:
 
 # endregion LOAD ENVIRONMENT VARIABLES
 
-embeddings_model_name = os.getenv("EMBEDDINGS_MODEL_NAME")
-embeddings_model_path = os.getenv("EMBEDDINGS_MODEL_PATH")
-chroma_db_path = os.getenv("CHROMA_DB_PATH")
-
-
 ########################################################################
 # region add langchain logging
 
 # > pip install langchain
 
-import langchain
+# import langchain
 
 # langchain.debug = True
 # langchain.verbose = True
 # endregion add langchain logging
+
+########################################################################
+
+# import only system from os
+from os import name, system
+
+
+# define our clear function
+def clear_terminal():
+
+    # for windows
+    if name == "nt":
+        _ = system("cls")
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system("clear")
+
 
 ########################################################################

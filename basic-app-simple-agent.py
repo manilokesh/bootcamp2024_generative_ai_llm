@@ -1,3 +1,16 @@
+# A Simple Agent
+"""
+our application to be able to decide which tool is the most suitable to answer the question we pose
+
+create an agent that knows how to decide between two tools: 
+doing a search on Google or connecting to a specific web page (weather forcast)
+
+● Load module and credentials for Google search.
+● Load module to connect with external URLs.
+● Define the tools our agent will use.
+● Initialize and configure the agent.
+● Ask the agent and observe how it decides by itself which tool to use to answer the question.
+"""
 
 from utils.MyUtils import clear_terminal, logger
 

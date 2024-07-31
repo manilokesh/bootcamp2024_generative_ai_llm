@@ -1,4 +1,5 @@
-from utils import init_llm, LlmModel, BaseChatModel, logger
+from utils.MyUtils import logger
+from utils.MyModels import init_llm, LlmModel, BaseChatModel
 
 ########################################################################
 # region Initialise foundation LLM
@@ -32,15 +33,14 @@ document_chunks = text_splitter.split_documents(document)
 print(f"Now you have {len(document_chunks)} chunks.")
 
 # Convert text chunks in numeric vectors (called "embeddings")
- 
 
-from utils_transformer import SentenceEmbeddingFunction
-from utils_vectorstore import vectorstore_create
+
+from utils.MyEmbeddingFunction import SentenceEmbeddingFunction
 
 my_embeddings = SentenceEmbeddingFunction()
 
-vectorstore = vectorstore_create(
-    documents=document_chunks, embedding=my_embeddings, collection_name="qa_retrieval_chain"
+from utils.MyVectorStore import chroma_from_documents
+
+vectorstore = chroma_from_documents(
+    documents=document_chunks, embedding=my_embeddings, collection_name="qa_from_docx"
 )
-
-

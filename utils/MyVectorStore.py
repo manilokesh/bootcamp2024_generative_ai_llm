@@ -7,9 +7,9 @@ from typing import (
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
+from chromadb.config import Settings
 
-
-def chroma_create(
+def chroma_from_documents(
     documents: List[Document],
     embedding: Embeddings,
     persist_directory: Optional[str] = None,
@@ -25,9 +25,10 @@ def chroma_create(
         embedding=embedding,
         persist_directory=persist_directory,
         collection_name=collection_name,
+        client_settings=Settings(anonymized_telemetry=False),
     )
     return vectorstore
-
+ 
 
 def chroma_get(
     embedding_function: Optional[Embeddings] = None,

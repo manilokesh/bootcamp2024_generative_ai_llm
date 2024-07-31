@@ -2,7 +2,8 @@ from langchain import hub
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
 
-from utils import BaseChatModel, LlmModel, init_llm
+import utils.MyUtils
+from utils.MyModels import BaseChatModel, LlmModel, init_llm
 
 # https://www.datacamp.com/tutorial/run-llama-3-locally
 
@@ -16,9 +17,10 @@ vectorstore = Chroma(
 
 
 from utils.MyEmbeddingFunction import SentenceEmbeddingFunction
-from utils.MyVectorStore import chroma_get
 
 my_embeddings = SentenceEmbeddingFunction()
+
+from utils.MyVectorStore import chroma_get
 
 vectorstore = chroma_get(
     collection_name="qa_retrieval_chain", embedding_function=my_embeddings

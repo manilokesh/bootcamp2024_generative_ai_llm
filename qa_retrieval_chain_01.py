@@ -4,9 +4,7 @@
 
 from langchain_community.document_loaders import DirectoryLoader
 
-loader = DirectoryLoader(
-    "D:/Workplace/python/ai/schema2sql01/resources/hims", glob="**/*.docx"
-)
+loader = DirectoryLoader("data", glob="HIMS_Functional.docx")
 books = loader.load()
 print(len(books))
 
@@ -26,11 +24,12 @@ vectorstore = Chroma.from_documents(
 """
 
 from utils.MyEmbeddingFunction import SentenceEmbeddingFunction
-from utils.MyVectorStore import chroma_create
 
 my_embeddings = SentenceEmbeddingFunction()
 
-vectorstore = chroma_create(
+from utils.MyVectorStore import chroma_from_documents
+
+vectorstore = chroma_from_documents(
     documents=all_splits, embedding=my_embeddings, collection_name="qa_retrieval_chain"
 )
 

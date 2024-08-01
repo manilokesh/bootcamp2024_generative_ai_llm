@@ -1,4 +1,4 @@
-# bootcamp2024_generative_ai_llm
+#  ツ  bootcamp2024_generative_ai_llm
  learn the keys to AI and build the most potential Generative AI applications.
 
 
@@ -107,3 +107,6 @@ opens a *"http://localhost:8888/"* in browser
     vectorstore = chroma_get(
         collection_name="qa_retrieval_chain", embedding_function=my_embeddings
     )
+
+
+ ツ 

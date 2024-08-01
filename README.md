@@ -154,7 +154,6 @@ vectorstore = chroma_get(
 
 
 
-
 ---
 
 > _Enjoy Coding !_

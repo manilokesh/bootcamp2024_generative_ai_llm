@@ -76,6 +76,12 @@ project_root/
 │   ├── __init__.py
 │   ├── MyxxxxModules.py
 │   └── MyEmbeddingFunction.py
+├── study0x/            # Source code directory
+│   ├── Program01.py
+│   └── Program02.py
+├── level_0x/           # Source code directory
+│   ├── Program01.py
+│   └── Program02.py
 └── your_script.py      # Main script
 ```
 

@@ -1,5 +1,14 @@
 # https://www.datacamp.com/tutorial/run-llama-3-locally
 
+
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from utils.MyUtils import clear_terminal, logger
+
 # pip install python-magic-bin
 
 from langchain_community.document_loaders import DirectoryLoader

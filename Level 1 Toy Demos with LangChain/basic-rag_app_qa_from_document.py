@@ -10,7 +10,13 @@ What if we want to ask questions about a document longer than that limit?
 ● Create a RetrievalQA chain to retrieve the data.
 """
 
-from utils.MyUtils import logger, clear_terminal
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
 

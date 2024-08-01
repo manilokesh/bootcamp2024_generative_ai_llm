@@ -12,9 +12,13 @@ Load the Github repo as a collection of documents and apply the RAG technique
 ● Create a RetrievalQA chain to retrieve the data.
 """
 
+# Import package from parent folder
+import os
+import sys
 
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
-from utils.MyUtils import logger, clear_terminal
+from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
 

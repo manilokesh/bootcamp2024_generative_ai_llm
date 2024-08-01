@@ -12,6 +12,12 @@ To test an Output Parser that is capable of:
 ● Apply the parser to obtain the desired output structure.
 """
 
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()

@@ -8,7 +8,11 @@ create an SQLDatabaseChain with the database and the LLM to which we can ask que
 ● Ask questions in natural language.
 """
 
-# for querying data from a database
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 from utils.MyUtils import clear_terminal, logger
 

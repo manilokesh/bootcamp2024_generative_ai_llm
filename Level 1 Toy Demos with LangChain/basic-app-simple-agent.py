@@ -12,6 +12,12 @@ doing a search on Google or connecting to a specific web page (weather forcast)
 ● Ask the agent and observe how it decides by itself which tool to use to answer the question.
 """
 
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()

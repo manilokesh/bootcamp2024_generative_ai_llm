@@ -8,7 +8,13 @@ Using a predefined LangChain chain to help the Foundation LLM, summarize a docum
 4. Use a predefined LangChain chain to send the parts to ChatGPT and get a summary of the document.
 """
 
-from utils.MyUtils import logger,clear_terminal
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
 

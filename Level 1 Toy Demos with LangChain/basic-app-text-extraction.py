@@ -10,7 +10,13 @@ Need to extract the names of the song and singer and archive them in JSON format
 ● Extract the data and archive it in JSON format.
 """
 
-from utils.MyUtils import logger, clear_terminal
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
 
@@ -39,12 +45,11 @@ print(format_instructions)
 
 # Create the ChatPromptTemplate
 
-from utils.MyModels import init_llm, LlmModel, BaseChatModel
+from utils.MyModels import BaseChatModel, LlmModel, init_llm
 
 llm: BaseChatModel = init_llm(LlmModel.MISTRAL, temperature=0)
 
-from langchain.prompts import ChatPromptTemplate
-from langchain.prompts import HumanMessagePromptTemplate
+from langchain.prompts import ChatPromptTemplate, HumanMessagePromptTemplate
 
 template = """
 Given a command from the user,

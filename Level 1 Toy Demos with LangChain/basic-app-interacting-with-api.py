@@ -11,7 +11,13 @@ Define the API and use a predefined chain to ask it questions
 """
 # https://python.langchain.com/v0.1/docs/use_cases/apis/
 
-from utils.MyUtils import logger, clear_terminal
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
 

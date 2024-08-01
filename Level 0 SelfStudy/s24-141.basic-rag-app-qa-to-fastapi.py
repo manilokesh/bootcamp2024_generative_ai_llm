@@ -1,3 +1,10 @@
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
+
 from utils.MyModels import BaseChatModel, LlmModel, init_llm
 from utils.MyUtils import logger
 

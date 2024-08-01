@@ -1,3 +1,9 @@
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from langchain.callbacks import StdOutCallbackHandler
 
 ########################################################################

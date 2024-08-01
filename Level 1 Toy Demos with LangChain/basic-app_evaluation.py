@@ -12,6 +12,12 @@ evaluate the quality of a question and answer application on a document (QA App)
 ● Use a QAEvalChain chain for the App to evaluate itself.
 """
 
+# Import package from parent folder
+import os
+import sys
+
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+
 from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()

@@ -18,14 +18,15 @@ def normalize_vectordb_path(optional_folder: Optional[str] = None) -> str:
     final_directory = configured_directory
 
     # Check for None in persist_directory and assign chroma_db_path if not provided
-    if optional_folder is not None: 
+    if optional_folder is not None:
         # final_directory = os.path.join(os.path.abspath(os.curdir), configured_directory, optional_folder)
-        final_directory = os.path.join( configured_directory, optional_folder)
+        final_directory = os.path.join(configured_directory, optional_folder)
 
     # Create the directory if it does not exist
     final_path = Path(final_directory)
     final_path.mkdir(parents=True, exist_ok=True)
-    print(f"Vector folder '{final_path}' created successfully!")
+
+    print(f"Vector DB persist folder: '{final_path}'")
 
     return final_path
 
@@ -38,7 +39,6 @@ def chroma_from_documents(
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
-    print(f"Vector DB persist folder: '{persist_directory}'")
 
     vectorstore = Chroma.from_documents(
         documents=documents,
@@ -56,9 +56,7 @@ def chroma_get(
     collection_name: str = "langchain",
 ) -> Chroma:
 
-    # Check for None in persist_directory and assign chroma_db_path if not provided
     persist_directory = normalize_vectordb_path(persist_directory)
-    print(f"Vector DB persist folder: '{persist_directory}'")
 
     vectorstore = Chroma(
         persist_directory=persist_directory,

@@ -13,16 +13,16 @@ c:\> cd D:\bootcamp2024_generative_ai_llm
 
 ### 🌐 Create a Virtual Environment
 
-Create a virtual environment named ```venv``` to isolate your project dependencies.
+Create a virtual environment named ```.venv``` to isolate your project dependencies.
 
 ```dos
 # Using absolute path to Python executable
 
-D:\bootcamp2024_generative_ai_llm> c:\Program Files\Python312\python.exe -m venv venv
+D:\bootcamp2024_generative_ai_llm> c:\Program Files\Python312\python.exe -m venv path/to/.venv
 
 # Or using the Python executable in your PATH
 
-D:\bootcamp2024_generative_ai_llm> python -m venv venv
+D:\bootcamp2024_generative_ai_llm> python -m venv path/to/.venv
 ```
 
 ### 🔌 Activate the Virtual Environment
@@ -30,7 +30,7 @@ D:\bootcamp2024_generative_ai_llm> python -m venv venv
 Activate the virtual environment to use its packages and dependencies.
 
 ```dos
-D:\bootcamp2024_generative_ai_llm> .\venv\Scripts\activate.bat
+D:\bootcamp2024_generative_ai_llm> .\.venv\Scripts\activate.bat
 ```
  
 

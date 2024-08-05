@@ -94,6 +94,8 @@ if uploaded_file is not None:
         st.write("Please enter a shorter file. The maximum length is 20000 words.")
         st.stop()
 
+    print(file_input)
+
     # if file_input:
     #     if not openai_api_key:
     #         st.warning(

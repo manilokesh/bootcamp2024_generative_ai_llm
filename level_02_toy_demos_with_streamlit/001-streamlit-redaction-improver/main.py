@@ -1,10 +1,20 @@
+# Improve Redaction
+"""
+rewrite a text in different styles.
+○ Convert a draft into formal text
+○ Convert formal text into informal text
+○ Translate from American English to British English
+
+Allows selecting tone and dialect options included in the Prompt Template
+
+"""
 
 # Import package from parent folder
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.curdir)) 
- 
+sys.path.append(os.path.abspath(os.curdir))
+
 from utils.MyUtils import clear_terminal, logger
 
 clear_terminal()
@@ -46,12 +56,11 @@ template = """
     YOUR {dialect} RESPONSE:
 """
 
-#PromptTemplate variables definition
+# PromptTemplate variables definition
 prompt = PromptTemplate(
     input_variables=["tone", "dialect", "draft"],
     template=template,
 )
-
 
 
 from utils.MyModels import BaseChatModel, LlmModel, init_llm
@@ -61,27 +70,36 @@ llm: BaseChatModel = init_llm(LlmModel.MISTRAL, temperature=0)
 
 # https://docs.streamlit.io/get-started
 
-#Page title and header
+# Page title and header
 st.set_page_config(page_title="Re-write your text")
 st.header("Re-write your text")
 
 
-#Intro: instructions
+# Intro: instructions
 col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("Re-write your text in different styles.")
 
 with col2:
-    st.write("Contact with [streamlit](https://docs.streamlit.io/get-started) to build your AI Projects")
+    st.write(
+        "Contact with [streamlit](https://docs.streamlit.io/get-started) to build your AI Projects"
+    )
 
 
 # Input
 st.markdown("## Enter the text you want to re-write")
 
+
 def get_draft():
-    draft_text = st.text_area(label="Text", label_visibility='collapsed', placeholder="Your Text...", key="draft_input")
+    draft_text = st.text_area(
+        label="Text",
+        label_visibility="collapsed",
+        placeholder="Your Text...",
+        key="draft_input",
+    )
     return draft_text
+
 
 draft_input = get_draft()
 
@@ -93,24 +111,22 @@ if len(draft_input.split(" ")) > 700:
 col1, col2 = st.columns(2)
 with col1:
     option_tone = st.selectbox(
-        'Which tone would you like your redaction to have?',
-        ('Formal', 'Informal'))
-    
+        "Which tone would you like your redaction to have?", ("Formal", "Informal")
+    )
+
 with col2:
     option_dialect = st.selectbox(
-        'Which English Dialect would you like?',
-        ('American', 'British'))
-    
-    
+        "Which English Dialect would you like?", ("American", "British")
+    )
+
+
 # Output
 st.markdown("### Your Re-written text:")
 
-if draft_input:  
+if draft_input:
 
     prompt_with_draft = prompt.format(
-        tone=option_tone, 
-        dialect=option_dialect, 
-        draft=draft_input
+        tone=option_tone, dialect=option_dialect, draft=draft_input
     )
 
     improved_redaction = llm(prompt_with_draft)

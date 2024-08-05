@@ -15,21 +15,23 @@ sys.path.append(os.path.abspath(os.curdir))
 # __import__("pysqlite3")
 import sys
 
-# sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
-
-import streamlit as st
 import chromadb
+
+# sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+import streamlit as st
+from langchain.chains import RetrievalQA
+from langchain.text_splitter import CharacterTextSplitter
+
 # import sqlite3
 from langchain_openai import OpenAI
-from langchain.chains import RetrievalQA
+from PyPDF2 import PdfReader
+
 # from langchain.embeddings.openai import OpenAIEmbeddings
 from utils.MyEmbeddingFunction import SentenceEmbeddingFunction
-from langchain.text_splitter import CharacterTextSplitter
+from utils.MyModels import BaseChatModel, LlmModel, init_llm
 
 # from langchain_community.vectorstores import FAISS
 from utils.MyVectorStore import chroma_from_documents
-from PyPDF2 import PdfReader
-from utils.MyModels import BaseChatModel, LlmModel, init_llm
 
 # Input .txt file
 # Format file

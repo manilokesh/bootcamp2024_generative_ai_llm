@@ -87,7 +87,7 @@ project_root/
 
 ### 🌍 Creating .env (Environment File)
 
-Create a file named .env in the root folder and add the following key-value pairs:
+Create a file named `.env` in the root folder and add the following key-value pairs:
 
 ```
 OPENAI_API_KEY=…

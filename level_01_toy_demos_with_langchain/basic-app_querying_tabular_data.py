@@ -12,7 +12,7 @@ create an SQLDatabaseChain with the database and the LLM to which we can ask que
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.abspath(os.curdir)) 
 
 from utils.MyUtils import clear_terminal, logger
 

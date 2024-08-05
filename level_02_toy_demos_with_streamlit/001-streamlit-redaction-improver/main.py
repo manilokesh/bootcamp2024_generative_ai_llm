@@ -59,7 +59,7 @@ from utils.MyModels import BaseChatModel, LlmModel, init_llm
 llm: BaseChatModel = init_llm(LlmModel.MISTRAL, temperature=0)
 
 
-
+# https://docs.streamlit.io/get-started
 
 #Page title and header
 st.set_page_config(page_title="Re-write your text")
@@ -73,7 +73,7 @@ with col1:
     st.markdown("Re-write your text in different styles.")
 
 with col2:
-    st.write("Contact with [AI Accelera](https://aiaccelera.com) to build your AI Projects")
+    st.write("Contact with [streamlit](https://docs.streamlit.io/get-started) to build your AI Projects")
 
 
 # Input

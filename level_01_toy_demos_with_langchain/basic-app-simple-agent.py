@@ -16,7 +16,7 @@ doing a search on Google or connecting to a specific web page (weather forcast)
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.abspath(os.curdir)) 
 
 from utils.MyUtils import clear_terminal, logger
 

@@ -16,7 +16,7 @@ evaluate the quality of a question and answer application on a document (QA App)
 import os
 import sys
 
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+sys.path.append(os.path.abspath(os.curdir)) 
 
 from utils.MyUtils import clear_terminal, logger
 

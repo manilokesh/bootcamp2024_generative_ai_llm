@@ -1,6 +1,6 @@
 # Asking From App: PDF
 """
-ask about the content of a PDF file.
+ask about the content of a CSV file with FAQs about Napoleon.
 RAG technique
 """
 import os

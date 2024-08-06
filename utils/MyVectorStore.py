@@ -1,5 +1,4 @@
 import os
-import sys
 from pathlib import Path
 from typing import (
     List,
@@ -24,11 +23,11 @@ def normalize_vectordb_path(optional_folder: Optional[str] = None) -> str:
 
     # Create the directory if it does not exist
     final_path = Path(final_directory)
-    final_path.mkdir(parents=True, exist_ok=True)
+    # final_path.mkdir(parents=True, exist_ok=True)
 
     print(f"Vector DB persist folder: '{final_path}'")
 
-    return final_path
+    return str(final_path)
 
 
 def chroma_from_documents(
@@ -45,7 +44,10 @@ def chroma_from_documents(
         embedding=embedding,
         persist_directory=persist_directory,
         collection_name=collection_name,
-        client_settings=Settings(anonymized_telemetry=False),
+        client_settings=Settings(
+            anonymized_telemetry=False,
+            is_persistent=True,
+        ),
     )
     return vectorstore
 
@@ -62,6 +64,9 @@ def chroma_get(
         persist_directory=persist_directory,
         collection_name=collection_name,
         embedding_function=embedding_function,
-        client_settings=Settings(anonymized_telemetry=False),
+        client_settings=Settings(
+            anonymized_telemetry=False,
+            is_persistent=True,
+        ),
     )
     return vectorstore

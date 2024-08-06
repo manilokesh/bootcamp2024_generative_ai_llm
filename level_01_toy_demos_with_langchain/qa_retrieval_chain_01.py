@@ -5,7 +5,7 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.curdir)) 
+sys.path.append(os.path.abspath(os.curdir))
 
 from utils.MyUtils import clear_terminal, logger
 
@@ -39,7 +39,10 @@ my_embeddings = SentenceEmbeddingFunction()
 from utils.MyVectorStore import chroma_from_documents
 
 vectorstore = chroma_from_documents(
-    documents=all_splits, embedding=my_embeddings, collection_name="qa_retrieval_chain"
+    documents=all_splits,
+    embedding=my_embeddings,
+    persist_directory="qa_retrieval_chain01",
+    collection_name="qa_retrieval_chain",
 )
 
 question = "how are patients registered?"

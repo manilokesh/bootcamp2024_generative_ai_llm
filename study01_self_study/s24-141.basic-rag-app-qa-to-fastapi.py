@@ -51,7 +51,10 @@ my_embeddings = SentenceEmbeddingFunction()
 from utils.MyVectorStore import chroma_from_documents
 
 vectorstore = chroma_from_documents(
-    collection_name="lc_code_collection", embedding_function=my_embeddings
+    documents=document_chunks,
+    persist_directory="s24-141.basic-rag-app-qa-to-fastapi",
+    collection_name="lc_code_collection",
+    embedding=my_embeddings,
 )
 
 ########################################################################

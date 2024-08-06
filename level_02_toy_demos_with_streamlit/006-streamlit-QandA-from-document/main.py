@@ -62,7 +62,7 @@ def generate_response(file, openai_api_key, query):
     store = chroma_from_documents(
         documents=docs,
         embedding=embeddings,
-        persist_directory="streamlit-qa-from-document",
+        persist_directory="006-streamlit-QandA-from-document",
         collection_name="streamlit-QandA-from-document",
     )
 

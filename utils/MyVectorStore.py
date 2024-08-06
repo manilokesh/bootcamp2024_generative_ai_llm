@@ -10,6 +10,8 @@ from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
 
+_LANGCHAIN_DEFAULT_COLLECTION_NAME = "langchain"
+
 
 def normalize_vectordb_path(optional_folder: Optional[str] = None) -> str:
 
@@ -34,7 +36,7 @@ def chroma_from_documents(
     documents: List[Document],
     embedding: Embeddings,
     persist_directory: Optional[str] = None,
-    collection_name: str = "langchain",
+    collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
@@ -55,7 +57,7 @@ def chroma_from_documents(
 def chroma_get(
     embedding_function: Optional[Embeddings] = None,
     persist_directory: Optional[str] = None,
-    collection_name: str = "langchain",
+    collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
@@ -64,6 +66,28 @@ def chroma_get(
         persist_directory=persist_directory,
         collection_name=collection_name,
         embedding_function=embedding_function,
+        client_settings=Settings(
+            anonymized_telemetry=False,
+            is_persistent=True,
+        ),
+    )
+    return vectorstore
+
+
+def chroma_from_texts(
+    texts: List[str],
+    embedding: Embeddings,
+    persist_directory: Optional[str] = None,
+    collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
+) -> Chroma:
+
+    persist_directory = normalize_vectordb_path(persist_directory)
+
+    vectorstore = Chroma.from_texts(
+        texts=texts,
+        embedding=embedding,
+        persist_directory=persist_directory,
+        collection_name=collection_name,
         client_settings=Settings(
             anonymized_telemetry=False,
             is_persistent=True,

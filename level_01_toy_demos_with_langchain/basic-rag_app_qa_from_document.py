@@ -14,7 +14,7 @@ What if we want to ask questions about a document longer than that limit?
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.curdir)) 
+sys.path.append(os.path.abspath(os.curdir))
 
 from utils.MyUtils import clear_terminal, logger
 
@@ -64,7 +64,10 @@ my_embeddings = SentenceEmbeddingFunction()
 from utils.MyVectorStore import chroma_from_documents
 
 vectorstore = chroma_from_documents(
-    documents=document_chunks, embedding=my_embeddings, collection_name="qa_from_docx"
+    documents=document_chunks,
+    embedding=my_embeddings,
+    persist_directory="basic_rag_app_qa_from_docx",
+    collection_name="qa_from_docx",
 )
 
 # Create a Retrieval Question & Answering Chain

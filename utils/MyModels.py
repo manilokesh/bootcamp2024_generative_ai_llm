@@ -38,11 +38,11 @@ def init_llm_gemini(modelname: str, temperature: float):
 # endregion google llm
 
 # region ollama llm
-from langchain_community.llms.ollama import Ollama
+from langchain_ollama import ChatOllama
 
 
 def init_llm_ollama(modelname: str, temperature: float):
-    return Ollama(model=modelname, num_gpu=1, temperature=temperature)
+    return ChatOllama(model=modelname, num_gpu=1, temperature=temperature)
 
 
 # endregion ollama llm

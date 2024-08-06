@@ -1,9 +1,8 @@
-
 # Import package from parent folder
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.curdir)) 
+sys.path.append(os.path.abspath(os.curdir))
 
 from utils.MyUtils import clear_terminal, logger
 
@@ -32,7 +31,9 @@ my_embeddings = SentenceEmbeddingFunction()
 from utils.MyVectorStore import chroma_get
 
 vectorstore = chroma_get(
-    collection_name="qa_retrieval_chain", embedding_function=my_embeddings
+    collection_name="qa_retrieval_chain",
+    persist_directory="qa_retrieval_chain01",
+    embedding_function=my_embeddings,
 )
 
 # loading the Llama3 model

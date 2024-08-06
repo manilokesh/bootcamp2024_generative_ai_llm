@@ -16,7 +16,7 @@ evaluate the quality of a question and answer application on a document (QA App)
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.curdir)) 
+sys.path.append(os.path.abspath(os.curdir))
 
 from utils.MyUtils import clear_terminal, logger
 
@@ -55,7 +55,10 @@ my_embeddings = SentenceEmbeddingFunction()
 from utils.MyVectorStore import chroma_from_documents
 
 vectorstore = chroma_from_documents(
-    documents=document_chunks, embedding=my_embeddings, collection_name="app_evaluation"
+    documents=document_chunks,
+    embedding=my_embeddings,
+    persist_directory="basicapp_evaluation",
+    collection_name="app_evaluation",
 )
 
 # Create a Retrieval Question & Answering Chain

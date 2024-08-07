@@ -1,0 +1,6 @@
+langchain-community 
+unstructured 
+openpyxl
+bs4
+wikipedia
+pypdf

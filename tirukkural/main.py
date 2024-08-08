@@ -5,6 +5,7 @@ from typing import List
 
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
+import json
 
 sys.path.append(os.path.abspath(os.curdir))
 
@@ -60,6 +61,24 @@ def load_documents_pdf() -> List[Document]:
     return documents
 
 
+def load_documents_txt() -> List[Document]:
+    from langchain_community.document_loaders import TextLoader
+
+    folder_path = "./tirukkural/data/txts"
+    documents = []
+    for file in os.listdir(folder_path):
+        if file.endswith(".txt"):
+            file_path = os.path.join(folder_path, file)
+            logger.info(f"loading file : {file_path}")
+            loader = TextLoader(file_path, encoding="utf8")
+            documents.extend(loader.load())
+
+            # pages = loader.load_and_split()
+            # print(pages[0])
+
+    return documents
+
+
 def load_document_html() -> List[Document]:
 
     # use unstructured to load HTML documents.
@@ -76,6 +95,38 @@ def load_document_html() -> List[Document]:
             logger.info(f"loading file : {file_path}")
             loader = UnstructuredHTMLLoader(file_path)
             documents.extend(loader.load())
+
+    return documents
+
+
+def load_document_json() -> List[Document]:
+
+    folder_path = "./tirukkural/data/json"
+    documents = []
+    for file in os.listdir(folder_path):
+        if file.endswith(".json"):
+            file_path = os.path.join(folder_path, file)
+            logger.info(f"loading file : {file_path}")
+            with open(file_path, "r", encoding="utf-8") as file:
+                data_list = json.load(file)
+                document = json_to_documents(data_list)
+                documents.extend(document)
+    return documents
+
+
+# Function to convert JSON data to Document objects
+def json_to_documents(json_data):
+    documents = []
+
+    # Ensure json_data is a dictionary
+    if isinstance(json_data, dict):
+        for key, value in json_data.items():
+            # Serialize value (document) as text
+            doc_text = json.dumps(value, ensure_ascii=False)
+
+            # Create Document object with serialized value as text
+            document = Document(page_content=doc_text, metadata={"id": str(key)})
+            documents.append(document)
 
     return documents
 
@@ -134,17 +185,25 @@ def setup_vectordb(documents: List[Document]) -> Chroma:
 def main():
     documents = []
 
-    documents_xl = load_document_xl()
-    documents.extend(documents_xl)
-    logger.debug(f"xl docs : {len(documents_xl)}")
+    # documents_xl = load_document_xl()
+    # documents.extend(documents_xl)
+    # logger.debug(f"xl docs : {len(documents_xl)}")
 
-    documents_pdf = load_documents_pdf()
-    documents.extend(documents_pdf)
-    logger.debug(f"pdf docs : {len(documents_pdf)}")
+    # documents_pdf = load_documents_pdf()
+    # documents.extend(documents_pdf)
+    # logger.debug(f"pdf docs : {len(documents_pdf)}")
 
-    documents_html = load_document_html()
-    documents.extend(documents_html)
-    logger.debug(f"html docs : {len(documents_html)}")
+    # documents_txt = load_documents_txt()
+    # documents.extend(documents_txt)
+    # logger.debug(f"text docs : {len(documents_txt)}")
+
+    # documents_html = load_document_html()
+    # documents.extend(documents_html)
+    # logger.debug(f"html docs : {len(documents_html)}")
+
+    documents_json = load_document_json()
+    documents.extend(documents_json)
+    logger.debug(f"json docs : {len(documents_json)}")
 
     # documents_images = load_document_images()
     # documents.extend(documents_images)

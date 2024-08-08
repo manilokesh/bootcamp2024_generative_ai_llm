@@ -168,6 +168,7 @@ def response_generator():
 # Display assistant response in chat message container
 with st.chat_message("assistant"):
     response = st.write_stream(response_generator())
+    st.image("./tirukkural/data/kuralpics/1.jpg", output_format="PNG", width=400)
 
 # Initialize chat history
 if "messages" not in st.session_state:

@@ -137,13 +137,6 @@ st.set_page_config(
 st.header("Thirukural")
 
 
-from streamlit_navigation_bar import st_navbar
-
-page = st_navbar(
-    ["Questions on Kural", "Thirukural Book", "About"], options={"use_padding": False}
-)
-# st.write(page)
-
 question = st.chat_input(
     placeholder="Kural in English or tamil",
     key=None,

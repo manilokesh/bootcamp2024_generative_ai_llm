@@ -97,9 +97,27 @@ CHROMA_DB_PATH=resources/chromadb
 EMBEDDINGS_MODEL_NAME=all-MiniLM-L6-v2
 EMBEDDINGS_MODEL_PATH=resources/models/sentencetransformers
 USER_AGENT=C:/Program Files/Google/Chrome/Application/chrome.exe
+
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+LANGCHAIN_API_KEY=…
 ```
 
 ## 💻 Code Snippets
+
+
+
+### 📝 Include project root folder with current file path
+
+when program file resides in sub folder, include to root folder, to access other modules
+
+```python
+import os
+import sys
+
+sys.path.append(os.path.abspath(os.curdir))
+
+```
 
 ### 📝 Logging
 

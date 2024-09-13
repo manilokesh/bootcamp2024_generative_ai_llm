@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import (
     List,
     Optional,
+    Dict,
 )
 
 from chromadb.config import Settings
@@ -37,6 +38,7 @@ def chroma_from_documents(
     embedding: Embeddings,
     persist_directory: Optional[str] = None,
     collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
+    collection_metadata: Optional[Dict] = None,
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
@@ -46,6 +48,7 @@ def chroma_from_documents(
         embedding=embedding,
         persist_directory=persist_directory,
         collection_name=collection_name,
+        collection_metadata=collection_metadata,
         client_settings=Settings(
             anonymized_telemetry=False,
             is_persistent=True,
@@ -58,6 +61,7 @@ def chroma_get(
     embedding_function: Optional[Embeddings] = None,
     persist_directory: Optional[str] = None,
     collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
+    collection_metadata: Optional[Dict] = None,
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
@@ -66,6 +70,7 @@ def chroma_get(
         persist_directory=persist_directory,
         collection_name=collection_name,
         embedding_function=embedding_function,
+        collection_metadata=collection_metadata,
         client_settings=Settings(
             anonymized_telemetry=False,
             is_persistent=True,
@@ -79,6 +84,7 @@ def chroma_from_texts(
     embedding: Embeddings,
     persist_directory: Optional[str] = None,
     collection_name: str = _LANGCHAIN_DEFAULT_COLLECTION_NAME,
+    collection_metadata: Optional[Dict] = None,
 ) -> Chroma:
 
     persist_directory = normalize_vectordb_path(persist_directory)
@@ -88,6 +94,7 @@ def chroma_from_texts(
         embedding=embedding,
         persist_directory=persist_directory,
         collection_name=collection_name,
+        collection_metadata=collection_metadata,
         client_settings=Settings(
             anonymized_telemetry=False,
             is_persistent=True,

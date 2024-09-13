@@ -8,6 +8,10 @@ class SentenceEmbeddingFunction:
 
         embeddings_model_name = os.getenv("EMBEDDINGS_MODEL_NAME")
         embeddings_model_path = os.getenv("EMBEDDINGS_MODEL_PATH")
+        # append model name with path name to create folder in model name
+        embeddings_model_path = os.path.join(
+            embeddings_model_path, embeddings_model_name
+        )
 
         # gets the projects base path
         dir_path_project = os.path.abspath(os.curdir)
@@ -19,10 +23,10 @@ class SentenceEmbeddingFunction:
         # download model locally to configured path
         if not os.path.exists(embeddings_model_path):
             # If not, download and save the model
-            model = SentenceTransformer(embeddings_model_name)
+            model = SentenceTransformer(embeddings_model_name, truncate_dim=384)
             model.save(embeddings_model_path)
 
-        self.model = SentenceTransformer(self.transformer_model_path)
+        self.model = SentenceTransformer(self.transformer_model_path, truncate_dim=384)
         self.chunk_size = 500
 
     def embed_text(self, text):
